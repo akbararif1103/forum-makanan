@@ -117,7 +117,7 @@
                     </div>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <a href=inputQuote.php>
-                            <button type="submit" class="btn btn-primary">Tambah Diskusi</button>
+                            <button type="submit" class="btn btn-primary">Tambah Diskusi Makanan</button>
                         </a>
                     </div>
                 </form>
