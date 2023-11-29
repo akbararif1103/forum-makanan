@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -101,32 +102,20 @@
 
             <?php
             include 'koneksi.php';
-            $id = $_GET['idEdit'];
-            $query = mysqli_query($konek, "SELECT * FROM isi_diskusi WHERE id_diskusi = '$id'");
-            $data = mysqli_fetch_array($query);
+            $id = $_POST["id_diskusi"];
+            $judul = $_POST["judul"];
+            $isi = $_POST["isi"];
+
+            $sql = "UPDATE isi_diskusi SET judul = '$judul', isi = '$isi' WHERE id_diskusi = '$id'";
+            $query = mysqli_query($konek, $sql);
+            if ($query) {
+            } else {
+                echo "update gagal";
+            }
             ?>
-            <section>
-                <h1 class="fw-bold">Edit Diskusi</h1>
-                <p>Edit judul dan isi diskusi anda!</p>
-                <form action="update.php" method="post" class="mt-5 px-5">
-                    <input type="hidden" name="id_diskusi" value="<?php echo $data["id_diskusi"] ?>">
-                    <div class="mb-3 row">
-                        <label for="author" class="col-sm-3 col-form-label">Judul:</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" name="judul" placeholder="Masukkan Judul Diskusi" value="<?php echo $data['judul']; ?>" required>
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label for="quote" class="col-sm-3 col-form-label">Isi Diskusi:</label>
-                        <div class="col-sm-9">
-                            <textarea class="form-control" name="isi" id="quote" value="<?php echo $data["isi"]; ?>" placeholder="Isi Diskusi" rows="5" required><?php echo $data["isi"]; ?></textarea>
-                        </div>
-                    </div>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button type="submit" class="btn btn-primary" value="simpan">Edit Diskusi</button>
-                    </div>
-                </form>
-            </section>
+            <a href="diskusi.php?idDiskusi=<?=$id?>">
+                <button class="btn btn-primary">Lihat Perubahan</button>
+            </a>
         </div>
     </div>
 

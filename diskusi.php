@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<?php 
+<?php
 session_start();
 include 'koneksi.php'; ?>
 
@@ -31,9 +31,9 @@ include 'koneksi.php'; ?>
         <!-- Sidebar  -->
         <nav id="sidebar">
             <a href="home.php">
-            <div class="sidebar-header">
-                <h3>Bincang Kuliner</h3>
-            </div>
+                <div class="sidebar-header">
+                    <h3>Bincang Kuliner</h3>
+                </div>
             </a>
             <ul class="list-unstyled components">
                 <div class="d-flex flex-row">
@@ -110,14 +110,14 @@ include 'koneksi.php'; ?>
             $result = mysqli_query($konek, $query);
             $row = mysqli_fetch_array($result);
             ?>
-            <h2><?= $row["judul"] ?></h2>
-            <p><?= $row["isi"] ?></p>
-            <cite>Oleh <span class="fw-bold"><?= $_SESSION['username'] ?></span>, Pada <?= date('d F Y', strtotime($row['tanggal'])) ?></cite><br><br>
-            <?php if($_SESSION['id']==$row['user_id']) {?>
-            <a href="edit.php?=<?= $row["id_diskusi"] ?>"> <button type="button" class="btn btn-primary">Edit</button></a>
-            <a href="hapus.php?=<?= $row["id_diskusi"] ?>"> <button type="button" class="btn btn-primary">Hapus</button></a>
-            <div class="line"></div>
-            <?php } ?>
+                <h2><?= $row["judul"] ?></h2>
+                <p><?= $row["isi"] ?></p>
+                <cite>Oleh <span class="fw-bold"><?= $_SESSION['username'] ?></span>, Pada <?= date('d F Y', strtotime($row['tanggal'])) ?></cite><br><br>
+                <?php if ($_SESSION['id'] == $row['user_id']) { ?>
+                    <a href="edit.php?idEdit=<?= $row["id_diskusi"] ?>"> <button type="button" class="btn btn-primary">Edit</button></a>
+                    <a href="hapus.php?idHapus=<?= $row["id_diskusi"] ?>"> <button type="button" class="btn btn-primary">Hapus</button></a>
+                    <div class="line"></div>
+            <?php }?>
         </div>
     </div>
     <!-- jQuery CDN - Slim version (=without AJAX) -->

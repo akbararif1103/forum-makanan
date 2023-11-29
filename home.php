@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html>
+<?php
+session_start();
+include 'koneksi.php';
 
+// Check apakah ada notifikasi yang disimpan di session
+if (isset($_SESSION['notification'])) {
+    // Tampilkan notifikasi dan hapus dari session
+    echo "<script>alert('" . $_SESSION['notification'] . "');</script>";
+    unset($_SESSION['notification']);
+}
+
+// Sisanya dari konten halaman home.php
+// ...
+?>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -99,7 +112,6 @@
             </nav>
 
             <?php
-            include 'koneksi.php';
             $query = "SELECT *  FROM  isi_diskusi d, user u WHERE d.user_id=u.id ORDER BY tanggal ASC";
             $result = mysqli_query($konek, $query);
             $data = [];
