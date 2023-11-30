@@ -106,13 +106,13 @@ include 'koneksi.php'; ?>
             </nav>
             <?php
             $id_diskusi = $_GET['idDiskusi'];
-            $query = "SELECT *  FROM  isi_diskusi WHERE id_diskusi='$id_diskusi'";
+            $query = "SELECT *  FROM  isi_diskusi d, user u WHERE d.id_diskusi='$id_diskusi' && d.user_id=u.id";
             $result = mysqli_query($konek, $query);
             $row = mysqli_fetch_array($result);
             ?>
                 <h2><?= $row["judul"] ?></h2>
                 <p><?= $row["isi"] ?></p>
-                <cite>Oleh <span class="fw-bold"><?= $_SESSION['username'] ?></span>, Pada <?= date('d F Y', strtotime($row['tanggal'])) ?></cite><br><br>
+                <cite>Oleh <span class="fw-bold"><?= $row['username'] ?></span>, Pada <?= date('d F Y', strtotime($row['tanggal'])) ?></cite><br><br>
                 <?php if ($_SESSION['id'] == $row['user_id']) { ?>
                     <a href="edit.php?idEdit=<?= $row["id_diskusi"] ?>"> <button type="button" class="btn btn-primary">Edit</button></a>
                     <a href="hapus.php?idHapus=<?= $row["id_diskusi"] ?>"> <button type="button" class="btn btn-primary">Hapus</button></a>
