@@ -14,7 +14,7 @@ if ($cek > 0) {
     $_SESSION['id'] = $data['id'];
     $_SESSION['username'] = $username;
     $_SESSION['status'] = "login";
-    header('location:home.php'); // Ganti dengan halaman tujuan setelah login berhasil
+    header('location:home.php'); 
 } else {
     header('location:index.php?pesan=gagal');
 }
