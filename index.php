@@ -40,6 +40,8 @@
               require './notifikasi/notifGagal.php';
             } else if ($_GET['pesan'] == 'logout') {
               require './notifikasi/notifLogout.php';
+            } else if ($_GET['pesan'] == 'belum_login'){
+              require './notifikasi/notifBelum.php';
             }
           }
           ?>

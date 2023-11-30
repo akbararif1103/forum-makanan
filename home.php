@@ -4,6 +4,10 @@
 session_start();
 include 'koneksi.php';
 
+if(empty($_SESSION['username'])){
+    header("location:index.php?pesan=belum_login");
+}
+
 // Check apakah ada notifikasi yang disimpan di session
 if (isset($_SESSION['notification'])) {
     // Tampilkan notifikasi dan hapus dari session
@@ -11,8 +15,6 @@ if (isset($_SESSION['notification'])) {
     unset($_SESSION['notification']);
 }
 
-// Sisanya dari konten halaman home.php
-// ...
 ?>
 <head>
     <meta charset="utf-8">
@@ -119,14 +121,8 @@ if (isset($_SESSION['notification'])) {
                 $data[] = $row;
             }
             foreach ($data as $row) { ?>
-                <h2><?= $row["judul"] ?></h2>
-
-                <p><?= $row["isi"] ?></p>
-
+                <a href="diskusi.php?idDiskusi=<?= $row["id_diskusi"] ?>"><h2><?= $row["judul"] ?></h2></a>
                 <cite>Oleh <span class="fw-bold"><?= $row["username"] ?></span>, Pada <?= date('d F Y', strtotime($row['tanggal'])) ?></cite><br><br>
-                <a href="diskusi.php?idDiskusi=<?= $row["id_diskusi"] ?>"> <button type="button" class="btn btn-primary">See Discussion</button></a>
-
-            
             <div class="line"></div>
             <?php } ?>
         </div>

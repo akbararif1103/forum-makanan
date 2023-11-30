@@ -2,7 +2,12 @@
 <html>
 <?php
 session_start();
-include 'koneksi.php'; ?>
+include 'koneksi.php';
+
+if(empty($_SESSION['username'])){
+    header("location:index.php?pesan=belum_login");
+}
+?>
 
 <head>
     <meta charset="utf-8">
@@ -114,10 +119,13 @@ include 'koneksi.php'; ?>
                 <p><?= $row["isi"] ?></p>
                 <cite>Oleh <span class="fw-bold"><?= $row['username'] ?></span>, Pada <?= date('d F Y', strtotime($row['tanggal'])) ?></cite><br><br>
                 <?php if ($_SESSION['id'] == $row['user_id']) { ?>
-                    <a href="edit.php?idEdit=<?= $row["id_diskusi"] ?>"> <button type="button" class="btn btn-primary">Edit</button></a>
-                    <a href="hapus.php?idHapus=<?= $row["id_diskusi"] ?>"> <button type="button" class="btn btn-primary">Hapus</button></a>
+                    <a href="edit.php?idEdit=<?= $row["id_diskusi"] ?>" >Edit</a>
+                    <a href="hapus.php?idHapus=<?= $row["id_diskusi"] ?>">Hapus</a>
                     <div class="line"></div>
-            <?php }?>
+            <?php }
+            
+            
+            ?>
         </div>
     </div>
     <!-- jQuery CDN - Slim version (=without AJAX) -->
