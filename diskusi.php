@@ -2,7 +2,12 @@
 <html>
 <?php
 session_start();
-include 'koneksi.php'; ?>
+include 'koneksi.php';
+
+if (empty($_SESSION['username'])) {
+    header("location:index.php?pesan=belum_login");
+}
+?>
 
 <head>
     <meta charset="utf-8">
@@ -11,6 +16,7 @@ include 'koneksi.php'; ?>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Collapsible sidebar using Bootstrap 4</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -110,14 +116,52 @@ include 'koneksi.php'; ?>
             $result = mysqli_query($konek, $query);
             $row = mysqli_fetch_array($result);
             ?>
-                <h2><?= $row["judul"] ?></h2>
-                <p><?= $row["isi"] ?></p>
-                <cite>Oleh <span class="fw-bold"><?= $row['username'] ?></span>, Pada <?= date('d F Y', strtotime($row['tanggal'])) ?></cite><br><br>
-                <?php if ($_SESSION['id'] == $row['user_id']) { ?>
-                    <a href="edit.php?idEdit=<?= $row["id_diskusi"] ?>"> <button type="button" class="btn btn-primary">Edit</button></a>
-                    <a href="hapus.php?idHapus=<?= $row["id_diskusi"] ?>"> <button type="button" class="btn btn-primary">Hapus</button></a>
-                    <div class="line"></div>
-            <?php }?>
+            <h1><?= $row["judul"] ?></h1>
+            <cite>Oleh <span class="fw-bold"><?= $row['username'] ?></span>, Pada <?= date('d F Y', strtotime($row['tanggal'])) ?></cite>
+            <br>
+            <div class="line"></div>
+            <h5>Isi Diskusi:</h5>
+            <div class="fw-normal"><?= $row["isi"] ?></div>
+            <br><br>
+            <?php if ($_SESSION['id'] == $row['user_id']) { ?>
+                <div class="float-right col-2">
+                    <a href="edit.php?idEdit=<?= $row["id_diskusi"] ?>" class="col 4 text-decoration-underline">Edit</a>
+                    |
+                    <a href="hapus.php?idHapus=<?= $row["id_diskusi"] ?>" class="col-4 text-decoration-underline">Hapus</a>
+                </div>
+                <div class="line"></div>
+            <?php } ?>
+            <div class="line"></div>
+            <div class="mb-4">
+                <h1>Komentar:</h1>
+                <a href="" class="text-decoration-underline link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Beri Komentar</a>
+            </div>
+
+            <?php
+            $komen_query = "SELECT * FROM isi_diskusi d JOIN user u ON d.user_id = u.id LEFT JOIN komentar k ON d.id_diskusi = k.diskusi_id WHERE d.id_diskusi = $id_diskusi
+            ORDER BY k.tanggal DESC";
+            $komen_result = mysqli_query($konek, $komen_query);
+            $komen_data = [];
+            while ($komen_row = mysqli_fetch_array($komen_result)) {
+                $komen_data[] = $komen_row;
+            }
+            foreach ($komen_data as $komen_row) { 
+                if (!empty($komen_row["isi_komen"])) { ?>
+                <div></div> 
+                <span class="fw-semibold text-decoration-underline"><?= $komen_row["username"] ?></span>
+                <span class="ml-3 fw-light"><?= date('d F Y H:i:s', strtotime($komen_row['tanggal'])) ?></span>
+                <h6><?= $komen_row["isi_komen"] ?></h6>
+                <?php if (!empty($komen_row["isi_komen"])) { ?>
+                <?php } ?>
+                <div class="line"></div>
+            <?php }
+        } ?>
+
+            <form action="komentar.php" method="post" class="d-flex flex-column mt-4">
+                <input type="text" name="diskusi_id" value="<?php echo $_GET['idDiskusi']; ?>" hidden>
+                <textarea name="komentar" id="" cols="30" rows="10" placeholder="Ketik Komentar"></textarea>
+                <button type="submit" class="btn btn-primary">Tambahkan Komentar</button>
+            </form>
         </div>
     </div>
     <!-- jQuery CDN - Slim version (=without AJAX) -->

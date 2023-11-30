@@ -118,7 +118,7 @@ var AutoTyping = (function (e) {
     },
   ]).default;
   
-  const exampleText = ['Talk About', 'Story About', 'History Of', 'Discussing'];
+  const exampleText = ['Talk About', 'Story About', 'History Of', 'Discussing','Recomend'];
   const exampleTyping = new AutoTyping('#text', exampleText, {
       typeSpeed: 100,
       deleteSpeed: 100,
