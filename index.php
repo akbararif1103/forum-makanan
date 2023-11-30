@@ -5,17 +5,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bincang Kuliner: Masuk ke situs</title>
-
   <!-- Logo in the title -->
-  <link rel="shortcut icon" href="img/logo.png" type="image/png">
-
-
+  <link rel="shortcut icon" href="/img/logo.png" type="image/png">
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
   <!-- CSS -->
   <link rel="stylesheet" href="style1.css">
-
   <!-- Font Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,8 +18,8 @@
 </head>
 
 <body>
-
   <section class="login d-flex">
+
     <div class="login-left w-50 h-100">
       <div class="row h-100 justify-content-center align-items-center">
         <div class="col-7">
@@ -44,7 +39,6 @@
           }
           ?>
 
-
           <form id="" class="login-form" action="cek_login.php" method="POST">
             <label for="username" class="form-label">Username</label>
             <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan username">
@@ -63,15 +57,11 @@
       </div>
     </div>
 
-
-
     <div class="login-right w-50">
       <img src="img/wallpaper2.png" alt="Wallpaper" style="width: 100%; height: 100%; object-fit: cover;">
     </div>
 
-
   </section>
-
 
   <!-- Bootstrap Script -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
