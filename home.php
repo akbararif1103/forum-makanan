@@ -88,7 +88,7 @@ if (isset($_SESSION['notification'])) {
 
                     <button type="button" id="sidebarCollapse" class="btn btn-info">
                         <i class="fas fa-align-left"></i>
-                        <span>Toggle Sidebar</span>
+                        <span></span>
                     </button>
                     <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
@@ -114,7 +114,7 @@ if (isset($_SESSION['notification'])) {
             </nav>
 
             <?php
-            $query = "SELECT *  FROM  isi_diskusi d, user u WHERE d.user_id=u.id ORDER BY tanggal ASC";
+            $query = "SELECT *  FROM  isi_diskusi d, user u WHERE d.user_id=u.id ORDER BY tanggal DESC";
             $result = mysqli_query($konek, $query);
             $data = [];
             while ($row = mysqli_fetch_array($result)) {

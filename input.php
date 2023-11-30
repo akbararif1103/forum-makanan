@@ -115,11 +115,7 @@
                             <textarea class="form-control" name="isi" id="quote" placeholder="Isi Diskusi" rows="5" required></textarea>
                         </div>
                     </div>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a href=inputQuote.php>
-                            <button type="submit" class="btn btn-primary">Tambah Diskusi</button>
-                        </a>
-                    </div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">                            <button type="submit" class="btn btn-primary">Tambah Diskusi</button>                    </div>
                 </form>
             </section>
         </div>
