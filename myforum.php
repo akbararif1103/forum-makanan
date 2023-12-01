@@ -23,7 +23,7 @@ if (isset($_SESSION['notification'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <title>Bincang Kuliner : Dashboard</title>
+    <title>Bincang Kuliner : My Forum</title>
 
     <link rel="shortcut icon" href="/img/logo.png">
 
@@ -66,7 +66,7 @@ if (isset($_SESSION['notification'])) {
                             <a href="#">Kategori</a>
                         </li>
                         <li>
-                            <a href="#">My Forum</a>
+                            <a href="myforum.php">My Forum</a>
                         </li>
                     </ul>
                 </li>
@@ -108,10 +108,10 @@ if (isset($_SESSION['notification'])) {
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Home</a>
+                                <a class="nav-link" href="home.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">My forum</a>
+                                <a class="nav-link" href="home.php">My forum</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="input.php">Add Discuss</a>

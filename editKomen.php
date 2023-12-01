@@ -42,12 +42,12 @@
                             <a href="#">Kategori</a>
                         </li>
                         <li>
-                            <a href="#">My Forum</a>
+                            <a href="myforum.php">My Forum</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Member</a>
+                    <a href="member.php">Member</a>
                 </li>
                 <li>
                     <a href="#">Profile</a>
@@ -75,7 +75,7 @@
 
                     <button type="button" id="sidebarCollapse" class="btn btn-info">
                         <i class="fas fa-align-left"></i>
-                        <span>Toggle Sidebar</span>
+                        <!-- <span>Toggle Sidebar</span> -->
                     </button>
                     <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
@@ -84,10 +84,10 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Home</a>
+                                <a class="nav-link" href="home.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">My forum</a>
+                                <a class="nav-link" href="myforum.php">My forum</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="input.php">Add Discuss</a>

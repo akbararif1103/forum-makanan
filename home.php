@@ -61,7 +61,7 @@ if (isset($_SESSION['notification'])) {
                             <a href="#">Kategori</a>
                         </li>
                         <li>
-                            <a href="#">My Forum</a>
+                            <a href="myforum.php">My Forum</a>
                         </li>
                     </ul>
                 </li>
@@ -103,10 +103,10 @@ if (isset($_SESSION['notification'])) {
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Home</a>
+                                <a class="nav-link" href="home.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">My forum</a>
+                                <a class="nav-link" href="myforum.php">My forum</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="input.php">Add Discuss</a>
