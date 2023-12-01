@@ -45,9 +45,11 @@ if (isset($_SESSION['notification'])) {
     <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
-            <div class="sidebar-header">
-                <h3>Bincang Kuliner</h3>
-            </div>
+            <a href="home.php">
+                <div class="sidebar-header">
+                    <h3>Bincang Kuliner</h3>
+                </div>
+            </a>
 
             <ul class="list-unstyled components">
                 <div class="d-flex flex-row">
@@ -119,13 +121,9 @@ if (isset($_SESSION['notification'])) {
                 </div>
             </nav>
 
-            <form class="d-flex py-3" action="search.php" method="GET">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
-                <button class="btn btn-outline-primary" type="submit">Search</button>
-            </form>
-
             <?php
-            $query = "SELECT *  FROM  isi_diskusi d, user u WHERE d.user_id=u.id ORDER BY tanggal DESC";
+            $search = $_GET["search"];
+            $query = "SELECT *  FROM  isi_diskusi d, user u WHERE d.user_id=u.id AND judul LIKE '%$search%' ORDER BY tanggal DESC";
             $result = mysqli_query($konek, $query);
             $data = [];
             while ($row = mysqli_fetch_array($result)) {

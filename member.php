@@ -66,7 +66,7 @@ if (isset($_SESSION['notification'])) {
                     </ul>
                 </li>
                 <li>
-                    <a href="member.php">Member</a>
+                    <a href="#">Member</a>
                 </li>
                 <li>
                     <a href="#">Profile</a>
@@ -119,25 +119,34 @@ if (isset($_SESSION['notification'])) {
                 </div>
             </nav>
 
-            <form class="d-flex py-3" action="search.php" method="GET">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
-                <button class="btn btn-outline-primary" type="submit">Search</button>
-            </form>
-
             <?php
-            $query = "SELECT *  FROM  isi_diskusi d, user u WHERE d.user_id=u.id ORDER BY tanggal DESC";
+            $query = "SELECT u.*,u.id AS id_user, COUNT(d.id_diskusi) as jumlah_diskusi 
+          FROM user u 
+          LEFT JOIN isi_diskusi d ON u.id = d.user_id 
+          GROUP BY u.id 
+          ORDER BY u.id DESC";
             $result = mysqli_query($konek, $query);
             $data = [];
             while ($row = mysqli_fetch_array($result)) {
                 $data[] = $row;
             }
-            foreach ($data as $row) { ?>
-                <a href="diskusi.php?idDiskusi=<?= $row["id_diskusi"] ?>">
-                    <h2><?= $row["judul"] ?></h2>
-                </a>
-                <cite>Oleh <span class="fw-bold"><?= $row["username"] ?></span>, Pada <?= date('d F Y', strtotime($row['tanggal'])) ?></cite><br><br>
-                <div class="line"></div>
-            <?php } ?>
+            ?>
+            <div class="d-flex flex-col gap-5 flex-wrap justify-content-start">
+                <?php
+                foreach ($data as $row) {
+                ?>
+                    <div class="card" style="width: 15rem;">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $row["username"] ?></h5>
+                            <p class="card-text">Jumlah Diskusi: <?= $row["jumlah_diskusi"] ?></p>
+                            <a href="myforum.php?idUser=<?= $row["id_user"] ?>" class="btn btn-primary">Lihat Forum</a>
+                        </div>
+                    </div>
+                <?php
+                }
+                ?>
+            </div>
+
         </div>
     </div>
 
