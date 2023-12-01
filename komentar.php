@@ -8,7 +8,8 @@
     $id_user = $_SESSION["id"];
     $diskusi_id = $_POST["diskusi_id"];
     $komentar = $_POST["komentar"];
-    $query = "INSERT INTO `komentar` (`user_id`, `diskusi_id`, `tanggal`, `isi_komen`) VALUES ('$id_user', '$diskusi_id', current_timestamp(), '$komentar')";
+    $reply_id = $_POST["reply_id"];
+    $query = "INSERT INTO `komentar` (`user_id`, `diskusi_id`,`id_reply`, `tanggal`, `isi_komen`) VALUES ('$id_user', '$diskusi_id','$reply_id', current_timestamp(), '$komentar')";
     $result = mysqli_query($konek, $query) or die(mysqli_error($konek));
 
     if($result){

@@ -139,34 +139,35 @@ if (empty($_SESSION['username'])) {
 
             <?php
             $previous_comment = '';
-            $komen_query = "SELECT * FROM isi_diskusi d, user u, komentar k WHERE $id_diskusi = k.diskusi_id AND u.id = k.user_id
-            ORDER BY k.tanggal DESC";
+            $reply_id = null;
+
+            $komen_query = "SELECT * FROM isi_diskusi d, user u, komentar k WHERE $id_diskusi = k.diskusi_id AND u.id = k.user_id AND k.id_reply=0 ORDER BY k.tanggal DESC";
             $komen_result = mysqli_query($konek, $komen_query);
             $komen_data = [];
+
             while ($komen_row = mysqli_fetch_array($komen_result)) {
                 $komen_data[] = $komen_row;
             }
-            foreach ($komen_data as $komen_row) {
-                if (!empty($komen_row["isi_komen"])) {
-                    $current_comment = $komen_row["isi_komen"];
-                    if ($current_comment != $previous_comment) { ?>
-                        <div></div>
-                        <span class="fw-semibold text-decoration-underline"><?= $komen_row["username"] ?></span>
-                        <span class="ml-3 fw-light"><?= date('d F Y H:i:s', strtotime($komen_row['tanggal'])) ?></span>
-                        <h6><?= $komen_row["isi_komen"] ?></h6>
-                        <?php if (!empty($komen_row["isi_komen"])) { ?>
-                        <?php } ?>
-                        <div class="line"></div>
-            <?php }
-                    $previous_comment = $current_comment;
-                }
-            } ?>
 
+            foreach ($komen_data as $komen_row) {
+                require 'outputKomen.php';
+            }
+            ?>
             <form action="komentar.php" method="post" class="d-flex flex-column mt-4">
+                <h3 id="title">Leave A Comment</h3>
+                <input type="hidden" name="reply_id" id="reply_id">
                 <input type="text" name="diskusi_id" value="<?php echo $_GET['idDiskusi']; ?>" hidden>
                 <textarea name="komentar" id="" cols="30" rows="10" placeholder="Ketik Komentar"></textarea>
                 <button type="submit" class="btn btn-primary">Tambahkan Komentar</button>
             </form>
+
+            <script>
+                function reply(id, name) {
+                    title = document.getElementById('title');
+                    title.innerHTML = "Reply to " + name;
+                    document.getElementById('reply_id').value = id;
+                }
+            </script>
         </div>
     </div>
     <!-- jQuery CDN - Slim version (=without AJAX) -->
