@@ -7,7 +7,7 @@
             $sql = "UPDATE isi_diskusi SET judul = '$judul', isi = '$isi' WHERE id_diskusi = '$id'";
             $query = mysqli_query($konek, $sql);
             if ($query) {
-                header("Location: http://localhost/forum-makanan/diskusi.php?idDiskusi=$id");
+                header("Location: diskusi.php?idDiskusi=$id");
             } else {
                 echo "update gagal";
             }
