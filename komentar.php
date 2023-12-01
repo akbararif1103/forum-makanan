@@ -12,7 +12,7 @@
     $result = mysqli_query($konek, $query) or die(mysqli_error($konek));
 
     if($result){
-        header("Location: http://localhost/forum-makanan/diskusi.php?idDiskusi=$diskusi_id");
+        header("Location: diskusi.php?idDiskusi=$diskusi_id");
     } else{
         echo "Input gagal";
     }

@@ -138,24 +138,29 @@ if (empty($_SESSION['username'])) {
             </div>
 
             <?php
-            $komen_query = "SELECT * FROM isi_diskusi d JOIN user u ON d.user_id = u.id LEFT JOIN komentar k ON d.id_diskusi = k.diskusi_id WHERE d.id_diskusi = $id_diskusi
+            $previous_comment = '';
+            $komen_query = "SELECT * FROM isi_diskusi d, user u, komentar k WHERE $id_diskusi = k.diskusi_id AND u.id = k.user_id
             ORDER BY k.tanggal DESC";
             $komen_result = mysqli_query($konek, $komen_query);
             $komen_data = [];
             while ($komen_row = mysqli_fetch_array($komen_result)) {
                 $komen_data[] = $komen_row;
             }
-            foreach ($komen_data as $komen_row) { 
-                if (!empty($komen_row["isi_komen"])) { ?>
-                <div></div> 
-                <span class="fw-semibold text-decoration-underline"><?= $komen_row["username"] ?></span>
-                <span class="ml-3 fw-light"><?= date('d F Y H:i:s', strtotime($komen_row['tanggal'])) ?></span>
-                <h6><?= $komen_row["isi_komen"] ?></h6>
-                <?php if (!empty($komen_row["isi_komen"])) { ?>
-                <?php } ?>
-                <div class="line"></div>
+            foreach ($komen_data as $komen_row) {
+                if (!empty($komen_row["isi_komen"])) {
+                    $current_comment = $komen_row["isi_komen"];
+                    if ($current_comment != $previous_comment) { ?>
+                        <div></div>
+                        <span class="fw-semibold text-decoration-underline"><?= $komen_row["username"] ?></span>
+                        <span class="ml-3 fw-light"><?= date('d F Y H:i:s', strtotime($komen_row['tanggal'])) ?></span>
+                        <h6><?= $komen_row["isi_komen"] ?></h6>
+                        <?php if (!empty($komen_row["isi_komen"])) { ?>
+                        <?php } ?>
+                        <div class="line"></div>
             <?php }
-        } ?>
+                    $previous_comment = $current_comment;
+                }
+            } ?>
 
             <form action="komentar.php" method="post" class="d-flex flex-column mt-4">
                 <input type="text" name="diskusi_id" value="<?php echo $_GET['idDiskusi']; ?>" hidden>
