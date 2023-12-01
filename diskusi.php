@@ -23,7 +23,8 @@ if (isset($_SESSION['notification'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <title>Collapsible sidebar using Bootstrap 4</title>
+    <title>Bincang Kuliner : Forum Diskusi</title>
+    <link rel="shortcut icon" href="/img/logo.png">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Bootstrap CSS CDN -->
@@ -60,7 +61,15 @@ if (isset($_SESSION['notification'])) {
                     <p class="fw-bold" style="margin-left: -35px;">Food</p>
                 </div>
                 <li class="active">
-                    <a href="home.php" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#">Kategori</a>
+                        </li>
+                        <li>
+                            <a href="myforum.php">My Forum</a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     <a href="member.php">Member</a>
@@ -88,7 +97,7 @@ if (isset($_SESSION['notification'])) {
 
                     <button type="button" id="sidebarCollapse" class="btn btn-info">
                         <i class="fas fa-align-left"></i>
-                        <span></span>
+                        <!-- <span>Toggle Sidebar</span> -->
                     </button>
                     <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>

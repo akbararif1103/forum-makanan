@@ -23,7 +23,8 @@ if (isset($_SESSION['notification'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <title>Bincang Kuliner : Dashboard</title>
+    <title>Bincang Kuliner : Hasil Search</title>
+    <link rel="shortcut icon" href="/img/logo.png">
 
     <link rel="shortcut icon" href="/img/logo.png">
 
@@ -97,7 +98,11 @@ if (isset($_SESSION['notification'])) {
                                 <a class="nav-link" href="home.php">Home</a>
                             </li>
                             <li class="nav-item">
+<<<<<<< HEAD
                                 <a class="nav-link" href="myforum.php?idUser=<?= $_SESSION['id'] ?>">My forum</a>
+=======
+                                <a class="nav-link" href="myforum.php">My forum</a>
+>>>>>>> 9eca7e4a5048fe1fc65fe172df530e41e8438d22
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="input.php">Add Discuss</a>
