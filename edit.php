@@ -39,7 +39,7 @@
                     <p class="fw-bold" style="margin-left: -35px;">Food</p>
                 </div>
                 <li class="active">
-                    <a href="home.php" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                    <a href="home.php" data-toggle="collapse" aria-expanded="false">Home</a>
                 </li>
                 <li>
                     <a href="member.php">Member</a>

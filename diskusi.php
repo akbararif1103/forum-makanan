@@ -61,7 +61,7 @@ if (isset($_SESSION['notification'])) {
                     <p class="fw-bold" style="margin-left: -35px;">Food</p>
                 </div>
                 <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
                             <a href="#">Kategori</a>

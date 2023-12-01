@@ -57,7 +57,7 @@ if (isset($_SESSION['notification'])) {
                     <p class="fw-bold" style="margin-left: -35px;">Food</p>
                 </div>
                 <li class="active">
-                    <a href="home.php" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                    <a href="home.php" data-toggle="collapse" aria-expanded="false">Home</a>
                 </li>
                 <li>
                     <a href="member.php">Member</a>
@@ -97,11 +97,7 @@ if (isset($_SESSION['notification'])) {
                                 <a class="nav-link" href="home.php">Home</a>
                             </li>
                             <li class="nav-item">
-<<<<<<< HEAD
                                 <a class="nav-link" href="myforum.php?idUser=<?= $_SESSION['id'] ?>">My forum</a>
-=======
-                                <a class="nav-link" href="home.php">My forum</a>
->>>>>>> 9eca7e4a5048fe1fc65fe172df530e41e8438d22
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="input.php">Add Discuss</a>
