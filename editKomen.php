@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>Bincang Kuliner : Form Edit</title>
-    <link rel="shortcut icon" href="/img/logo.png" >
+    <link rel="shortcut icon" href="/img/logo.png">
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -26,9 +27,11 @@
     <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
-            <div class="sidebar-header">
-                <h3>Bincang Kuliner</h3>
-            </div>
+            <a href="home.php">
+                <div class="sidebar-header">
+                    <h3>Bincang Kuliner</h3>
+                </div>
+            </a>
 
             <ul class="list-unstyled components">
                 <div class="d-flex flex-row">
@@ -36,24 +39,13 @@
                     <p class="fw-bold" style="margin-left: -35px;">Food</p>
                 </div>
                 <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#">Kategori</a>
-                        </li>
-                        <li>
-                            <a href="#">My Forum</a>
-                        </li>
-                    </ul>
+                    <a href="home.php" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
                 </li>
                 <li>
-                    <a href="#">Member</a>
+                    <a href="member.php">Member</a>
                 </li>
                 <li>
-                    <a href="#">Profile</a>
-                </li>
-                <li>
-                    <a href="#">Source Code</a>
+                    <a href="https://github.com/akbararif1103/forum-makanan">Source Code</a>
                 </li>
             </ul>
 
@@ -75,7 +67,7 @@
 
                     <button type="button" id="sidebarCollapse" class="btn btn-info">
                         <i class="fas fa-align-left"></i>
-                        <span>Toggle Sidebar</span>
+                        <span></span>
                     </button>
                     <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
@@ -84,16 +76,13 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Home</a>
+                                <a class="nav-link" href="home.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">My forum</a>
+                                <a class="nav-link" href="myforum.php?idUser=<?= $_SESSION['id'] ?>">My forum</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="input.php">Add Discuss</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Profile</a>
                             </li>
                         </ul>
                     </div>
@@ -118,7 +107,7 @@
                         </div>
                     </div>
                     <div class="d-grid gap-2 d-md-flex justify-content-center">
-                            <button type="submit" class="btn btn-primary" value="simpan">Edit Pendapat</button>
+                        <button type="submit" class="btn btn-primary" value="simpan">Edit Pendapat</button>
                     </div>
                 </form>
             </section>

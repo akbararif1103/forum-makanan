@@ -45,9 +45,11 @@ if (isset($_SESSION['notification'])) {
     <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
-            <div class="sidebar-header">
-                <h3>Bincang Kuliner</h3>
-            </div>
+            <a href="home.php">
+                <div class="sidebar-header">
+                    <h3>Bincang Kuliner</h3>
+                </div>
+            </a>
 
             <ul class="list-unstyled components">
                 <div class="d-flex flex-row">
@@ -55,24 +57,13 @@ if (isset($_SESSION['notification'])) {
                     <p class="fw-bold" style="margin-left: -35px;">Food</p>
                 </div>
                 <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#">Kategori</a>
-                        </li>
-                        <li>
-                            <a href="#">My Forum</a>
-                        </li>
-                    </ul>
+                    <a href="home.php" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
                 </li>
                 <li>
-                    <a href="#">Member</a>
+                    <a href="member.php">Member</a>
                 </li>
                 <li>
-                    <a href="#">Profile</a>
-                </li>
-                <li>
-                    <a href="#">Source Code</a>
+                    <a href="https://github.com/akbararif1103/forum-makanan">Source Code</a>
                 </li>
             </ul>
 
@@ -103,16 +94,13 @@ if (isset($_SESSION['notification'])) {
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Home</a>
+                                <a class="nav-link" href="home.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">My forum</a>
+                                <a class="nav-link" href="myforum.php?idUser=<?= $_SESSION['id'] ?>">My forum</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="input.php">Add Discuss</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Profile</a>
                             </li>
                         </ul>
                     </div>

@@ -50,9 +50,6 @@ if (isset($_SESSION['notification'])) {
                     <h3>Bincang Kuliner</h3>
                 </div>
             </a>
-            <div class="sidebar-header">
-                <h3>Bincang Kuliner</h3>
-            </div>
 
             <ul class="list-unstyled components">
                 <div class="d-flex flex-row">
@@ -60,24 +57,13 @@ if (isset($_SESSION['notification'])) {
                     <p class="fw-bold" style="margin-left: -35px;">Food</p>
                 </div>
                 <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#">Kategori</a>
-                        </li>
-                        <li>
-                            <a href="#">My Forum</a>
-                        </li>
-                    </ul>
+                    <a href="home.php" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
                 </li>
                 <li>
                     <a href="member.php">Member</a>
                 </li>
                 <li>
-                    <a href="#">Profile</a>
-                </li>
-                <li>
-                    <a href="#">Source Code</a>
+                    <a href="https://github.com/akbararif1103/forum-makanan">Source Code</a>
                 </li>
             </ul>
 
@@ -108,16 +94,13 @@ if (isset($_SESSION['notification'])) {
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Home</a>
+                                <a class="nav-link" href="home.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">My forum</a>
+                                <a class="nav-link" href="myforum.php?idUser=<?= $_SESSION['id'] ?>">My forum</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="input.php">Add Discuss</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Profile</a>
                             </li>
                         </ul>
                     </div>
@@ -125,20 +108,43 @@ if (isset($_SESSION['notification'])) {
             </nav>
 
             <?php
-            $idUser = $_GET["idUser"];
-            $query = "SELECT *  FROM  isi_diskusi d, user u WHERE u.id=$idUser AND $idUser=d.user_id ORDER BY tanggal DESC";
-            $result = mysqli_query($konek, $query);
-            $data = [];
-            while ($row = mysqli_fetch_array($result)) {
-                $data[] = $row;
+            if (isset($_GET["idUser"])) {
+                $idUser = $_GET["idUser"];
+
+                // Using a JOIN statement for better readability
+                $query = "SELECT * FROM isi_diskusi d JOIN user u ON d.user_id = u.id WHERE u.id = $idUser ORDER BY tanggal DESC";
+                $result = mysqli_query($konek, $query);
+
+                if ($result && mysqli_num_rows($result) > 0) {
+                    // Fetch the first row to get the username
+                    $firstRow = mysqli_fetch_assoc($result);
+                    $username = $firstRow["username"];
+
+            ?>
+                    <h1>Berikut Diskusi yang dibuat oleh <strong><?= $username ?></strong></h1>
+                    <div class="line"></div>
+                    <?php
+
+                    // Reset the result pointer
+                    mysqli_data_seek($result, 0);
+
+                    while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
+                        <a href="diskusi.php?idDiskusi=<?= $row["id_diskusi"] ?>">
+                            <h2><?= $row["judul"] ?></h2>
+                        </a>
+                        <cite>Oleh <span class="fw-bold"><?= $row["username"] ?></span>, Pada <?= date('d F Y', strtotime($row['tanggal'])) ?></cite><br><br>
+                        <div class="line"></div>
+            <?php
+                    }
+                } else {
+                    echo "Tidak ada diskusi yang dibuat oleh pengguna tersebut.";
+                }
+            } else {
+                echo "Parameter ID User tidak ditemukan.";
             }
-            foreach ($data as $row) { ?>
-                <a href="diskusi.php?idDiskusi=<?= $row["id_diskusi"] ?>">
-                    <h2><?= $row["judul"] ?></h2>
-                </a>
-                <cite>Oleh <span class="fw-bold"><?= $row["username"] ?></span>, Pada <?= date('d F Y', strtotime($row['tanggal'])) ?></cite><br><br>
-                <div class="line"></div>
-            <?php } ?>
+            ?>
+
         </div>
     </div>
 
