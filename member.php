@@ -25,7 +25,7 @@ if (isset($_SESSION['notification'])) {
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Bincang Kuliner : Member</title>
 
-    <link rel="shortcut icon" href="/img/logo.png">
+    <link rel="shortcut icon" href="./img/logo.png">
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -46,8 +46,9 @@ if (isset($_SESSION['notification'])) {
         <!-- Sidebar  -->
         <nav id="sidebar">
             <a href="home.php">
-                <div class="sidebar-header">
+                <div class="sidebar-header d-flex flex-col align-items-center">
                     <h3>Bincang Kuliner</h3>
+                    <img src="./img/logo.png" alt="" width="60" height="60">
                 </div>
             </a>
 

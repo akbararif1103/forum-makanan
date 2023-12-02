@@ -24,7 +24,7 @@ if (isset($_SESSION['notification'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Bincang Kuliner : Forum Diskusi</title>
-    <link rel="shortcut icon" href="/img/logo.png">
+    <link rel="shortcut icon" href="./img/logo.png">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Bootstrap CSS CDN -->
@@ -50,8 +50,9 @@ if (isset($_SESSION['notification'])) {
         <!-- Sidebar  -->
         <nav id="sidebar">
             <a href="home.php">
-                <div class="sidebar-header">
+                <div class="sidebar-header d-flex flex-col align-items-center">
                     <h3>Bincang Kuliner</h3>
+                    <img src="./img/logo.png" alt="" width="60" height="60">
                 </div>
             </a>
 
